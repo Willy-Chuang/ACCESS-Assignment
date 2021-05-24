@@ -3,15 +3,17 @@ package com.willychuang.access.network
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.willychuang.access.BuildConfig
+import com.willychuang.access.data.User
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-private const val HOST_NAME = "developer.github.com/"
-private const val API_VERSION = "v3"
-private const val BASE_URL = "https://$HOST_NAME/$API_VERSION/"
+private const val HOST_NAME = "api.github.com/"
+private const val BASE_URL = "https://$HOST_NAME/"
 
 /**
  * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
@@ -41,6 +43,11 @@ private val retrofit = Retrofit.Builder()
 
 interface ServerApiService {
     // Api Methods
+    @GET("users")
+    suspend fun getAllUsers() : List<User>
+
+    @GET("users/{login}")
+    suspend fun getUser(@Path("login") login: String)
 }
 
 object ServerApi {
