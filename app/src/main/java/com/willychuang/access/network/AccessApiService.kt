@@ -47,7 +47,7 @@ interface ServerApiService {
     suspend fun getAllUsers() : List<User>
 
     @GET("users/{login}")
-    suspend fun getUser(@Path("login") login: String)
+    suspend fun getUser(@Path("login") login: String): User
 }
 
 object ServerApi {
