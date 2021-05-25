@@ -23,6 +23,13 @@ class UserListAdapter() :
             val outlineProvider = AvatarOutlineProvider()
             binding.outlineProvider = outlineProvider
             binding.user = user
+            binding.layoutCardUser.setOnClickListener {
+                Navigation.createNavigateOnClickListener(
+                    NavigationDirections.NavigateToUserDetail(
+                        user.login
+                    )
+                ).onClick(binding.layoutCardUser)
+            }
 
             binding.executePendingBindings()
 

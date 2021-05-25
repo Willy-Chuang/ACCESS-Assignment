@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-private const val HOST_NAME = "api.github.com/"
+private const val HOST_NAME = "api.github.com"
 private const val BASE_URL = "https://$HOST_NAME/"
 
 /**

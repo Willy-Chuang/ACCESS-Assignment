@@ -17,7 +17,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/layout_card_user"
@@ -55,10 +55,10 @@
                     android:layout_marginStart="15dp"
                     android:text="@{user.login}"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@id/image_user"
                     app:layout_constraintStart_toEndOf="@id/image_user"
                     app:layout_constraintTop_toTopOf="@id/image_user"
                     app:layout_constraintBottom_toTopOf="@id/text_staff_tag"
+                    app:layout_constraintVertical_chainStyle="spread"
                     tools:text="Spongbob" />
 
                 <TextView
@@ -76,7 +76,8 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="12dp"
                     app:layout_constraintStart_toStartOf="@id/text_user_name"
-                    app:layout_constraintTop_toBottomOf="@id/text_user_name" />
+                    app:layout_constraintTop_toBottomOf="@id/text_user_name"
+                    app:layout_constraintBottom_toBottomOf="@id/image_user"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

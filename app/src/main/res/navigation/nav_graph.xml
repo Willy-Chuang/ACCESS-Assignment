@@ -2,27 +2,35 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    android:id="@+id/navigation"
+    app:startDestination="@id/UserListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/UserListFragment"
         android:name="com.willychuang.access.UserListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_user_list">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/UserDetailFragment"
         android:name="com.willychuang.access.UserDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_user_detail">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
     </fragment>
+
+    <action
+        android:id="@+id/NavigateToUserList"
+        app:destination="@id/UserListFragment" />
+
+    <action
+        android:id="@+id/NavigateToUserDetail"
+        app:destination="@id/UserDetailFragment">
+        <argument
+            android:name="login"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+    </action>
 </navigation>
