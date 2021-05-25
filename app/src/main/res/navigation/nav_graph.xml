@@ -17,6 +17,12 @@
         android:name="com.willychuang.access.UserDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_user_detail">
+        <argument
+            android:name="login"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
     </fragment>
 
     <action
@@ -26,11 +32,5 @@
     <action
         android:id="@+id/NavigateToUserDetail"
         app:destination="@id/UserDetailFragment">
-        <argument
-            android:name="login"
-            app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null"
-            />
     </action>
 </navigation>
