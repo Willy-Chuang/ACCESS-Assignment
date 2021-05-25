@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.willychuang.access.data.User" />
+
+        <variable
+            name="outlineProvider"
+            type="com.willychuang.access.utils.AvatarOutlineProvider" />
+        <import type="android.view.View"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layout_card_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
+
+                <ImageView
+                    android:id="@+id/image_user"
+                    imageUrl="@{user.avatarUrl}"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="25dp"
+                    android:outlineProvider="@{outlineProvider}"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:id="@+id/text_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@{user.login}"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/image_user"
+                    app:layout_constraintStart_toEndOf="@id/image_user"
+                    app:layout_constraintTop_toTopOf="@id/image_user"
+                    app:layout_constraintBottom_toTopOf="@id/text_staff_tag"
+                    tools:text="Spongbob" />
+
+                <TextView
+                    android:id="@+id/text_staff_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:translationZ="3dp"
+                    android:paddingHorizontal="5dp"
+                    android:paddingStart="7dp"
+                    android:paddingVertical="1dp"
+                    android:background="@drawable/bg_tag_staff"
+                    android:text="Staff"
+                    android:visibility="@{user.siteAdmin == false ? View.GONE : View.VISIBLE}"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintStart_toStartOf="@id/text_user_name"
+                    app:layout_constraintTop_toBottomOf="@id/text_user_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
