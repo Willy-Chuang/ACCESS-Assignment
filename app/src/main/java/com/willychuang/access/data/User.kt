@@ -10,7 +10,7 @@ data class User(
     @Json(name = "avatar_url") val avatarUrl: String? = "",
     @Json(name = "site_admin") val siteAdmin: Boolean,
     @Json(name = "name")val name: String? = "",
-    @Json(name = "bio")val bio: String? = "",
+    @Json(name = "bio") var bio: String? = "",
     @Json(name = "location")val location: String? = "",
     @Json(name = "blog")val blog: String? = ""
 ) : Parcelable

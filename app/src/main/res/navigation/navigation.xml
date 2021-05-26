@@ -24,11 +24,13 @@
     </fragment>
 
     <action
-        android:id="@+id/NavigateToUserList"
-        app:destination="@id/UserListFragment" />
+        android:id="@+id/navigate_to_user_list"
+        app:destination="@id/UserListFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true"/>
 
     <action
-        android:id="@+id/NavigateToUserDetail"
+        android:id="@+id/navigate_to_user_detail"
         app:destination="@id/UserDetailFragment" />
 
 </navigation>

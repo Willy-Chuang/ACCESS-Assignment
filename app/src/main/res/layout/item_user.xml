@@ -58,7 +58,7 @@
                     app:layout_constraintStart_toEndOf="@id/image_user"
                     app:layout_constraintTop_toTopOf="@id/image_user"
                     app:layout_constraintBottom_toTopOf="@id/text_staff_tag"
-                    app:layout_constraintVertical_chainStyle="spread"
+                    app:layout_constraintVertical_chainStyle="packed"
                     tools:text="Spongbob" />
 
                 <TextView
@@ -70,8 +70,7 @@
                     android:paddingStart="7dp"
                     android:paddingVertical="1dp"
                     android:background="@drawable/bg_tag_staff"
-                    android:text="Staff"
-                    android:visibility="@{user.siteAdmin == false ? View.GONE : View.VISIBLE}"
+                    isAdmin="@{user.siteAdmin}"
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     android:layout_marginTop="12dp"

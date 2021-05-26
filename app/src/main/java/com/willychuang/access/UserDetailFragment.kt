@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.willychuang.access.databinding.FragmentUserDetailBinding
+import com.willychuang.access.utils.BigAvatarOutlineProvider
+import com.willychuang.access.utils.Logger
 import com.willychuang.access.utils.getVmFactory
 
 /**
@@ -21,9 +23,9 @@ class UserDetailFragment : Fragment() {
 
     private val viewModel by viewModels<UserDetailViewModel> {
         getVmFactory(
-//            UserDetailFragmentArgs.fromBundle(
-//                requireArguments()
-//            ).login
+            UserDetailFragmentArgs.fromBundle(
+                requireArguments()
+            ).login
         )
     }
 
@@ -34,6 +36,10 @@ class UserDetailFragment : Fragment() {
         binding = FragmentUserDetailBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.imageClose.setOnClickListener {
+            findNavController().navigate(NavigationDirections.navigateToUserList())
+        }
+        binding.outlineProvider = BigAvatarOutlineProvider()
         return binding.root
     }
 

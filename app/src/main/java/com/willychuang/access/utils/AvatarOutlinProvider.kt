@@ -13,3 +13,11 @@ class AvatarOutlineProvider : ViewOutlineProvider() {
         outline.setOval(0, 0, radius, radius)
     }
 }
+
+class BigAvatarOutlineProvider : ViewOutlineProvider() {
+    override fun getOutline(view: View, outline: Outline) {
+        view.clipToOutline = true
+        val radius = AccessApplication.instance.resources.getDimensionPixelSize(R.dimen.big_radius_avatar)
+        outline.setOval(0, 0, radius, radius)
+    }
+}

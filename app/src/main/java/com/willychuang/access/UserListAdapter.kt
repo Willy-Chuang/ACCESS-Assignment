@@ -25,7 +25,7 @@ class UserListAdapter() :
             binding.user = user
             binding.layoutCardUser.setOnClickListener {
                 Navigation.createNavigateOnClickListener(
-                    NavigationDirections.NavigateToUserDetail(
+                    NavigationDirections.navigateToUserDetail(
                         user.login
                     )
                 ).onClick(binding.layoutCardUser)

@@ -1,4 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="radius_avatar">50dp</dimen>
+    <dimen name="big_radius_avatar">200dp</dimen>
 </resources>

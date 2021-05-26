@@ -63,7 +63,7 @@ class UserDetailViewModel(private val repository: AccessRepository, val login: S
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
                     Logger.i("register status =${result.data}")
-                    result.data
+                    checkBio(result.data)
                 }
                 is Result.Fail -> {
                     _error.value = result.error
@@ -84,5 +84,12 @@ class UserDetailViewModel(private val repository: AccessRepository, val login: S
 
             }
         }
+    }
+
+    private fun checkBio(user: User): User {
+        if (user.bio.isNullOrEmpty()) {
+            user.bio = "-"
+        }
+        return user
     }
 }
