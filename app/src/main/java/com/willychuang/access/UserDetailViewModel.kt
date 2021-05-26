@@ -54,6 +54,7 @@ class UserDetailViewModel(private val repository: AccessRepository, val login: S
     }
 
     private fun getUser(login: String){
+        _status.value = LoadApiStatus.LOADING
         coroutineScope.launch {
 
             val result = repository.getUser(login)

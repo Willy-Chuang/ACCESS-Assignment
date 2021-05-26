@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.willychuang.access.databinding.FragmentUserListBinding
+import com.willychuang.access.network.LoadApiStatus
 import com.willychuang.access.utils.getVmFactory
 
 /**
@@ -31,6 +32,19 @@ class UserListFragment : Fragment() {
 
         viewModel.users.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
+        })
+
+        viewModel.status.observe(viewLifecycleOwner, Observer {
+            //Handle network respond state
+            if(it == LoadApiStatus.LOADING) {
+                binding.progress.visibility = View.VISIBLE
+            } else {
+                binding.progress.visibility = View.GONE
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            //Can build alert to show user the relevant exception
         })
 
         return binding.root

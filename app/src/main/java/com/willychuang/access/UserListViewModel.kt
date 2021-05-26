@@ -52,6 +52,7 @@ class UserListViewModel (val repository: AccessRepository): ViewModel() {
     }
 
     private fun getAllUsers(){
+        _status.value = LoadApiStatus.LOADING
         coroutineScope.launch {
 
             val result = repository.getAllUsers()

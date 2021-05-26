@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.willychuang.access.databinding.FragmentUserDetailBinding
+import com.willychuang.access.network.LoadApiStatus
 import com.willychuang.access.utils.BigAvatarOutlineProvider
 import com.willychuang.access.utils.Logger
 import com.willychuang.access.utils.getVmFactory
@@ -40,6 +41,19 @@ class UserDetailFragment : Fragment() {
             findNavController().navigate(NavigationDirections.navigateToUserList())
         }
         binding.outlineProvider = BigAvatarOutlineProvider()
+
+        viewModel.status.observe(viewLifecycleOwner, Observer {
+            //Handle network respond state
+            if(it == LoadApiStatus.LOADING) {
+                binding.progress.visibility = View.VISIBLE
+            } else {
+                binding.progress.visibility = View.GONE
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            //Can build alert to show user the relevant exception
+        })
         return binding.root
     }
 
