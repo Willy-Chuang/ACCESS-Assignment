@@ -2,6 +2,7 @@ package com.willychuang.access.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.willychuang.access.UserDetailViewModel
 import com.willychuang.access.UserListViewModel
 import com.willychuang.access.data.source.AccessRepository
 

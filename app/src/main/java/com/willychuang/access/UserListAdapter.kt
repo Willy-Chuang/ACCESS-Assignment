@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.willychuang.access.data.User
 import com.willychuang.access.databinding.ItemUserBinding
 import com.willychuang.access.utils.AvatarOutlineProvider
+import com.willychuang.access.utils.Logger
 
 class UserListAdapter() :
     ListAdapter<User, RecyclerView.ViewHolder>(DiffCallback) {
 
     class UserViewHolder(
         private var binding: ItemUserBinding
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(user: User) {
 
@@ -32,8 +32,6 @@ class UserListAdapter() :
             }
 
             binding.executePendingBindings()
-
-
         }
 
     }

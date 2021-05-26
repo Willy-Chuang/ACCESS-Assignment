@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.willychuang.access.databinding.FragmentUserDetailBinding
 import com.willychuang.access.utils.getVmFactory
 
 /**
@@ -15,11 +17,13 @@ import com.willychuang.access.utils.getVmFactory
  */
 class UserDetailFragment : Fragment() {
 
+    lateinit var binding: FragmentUserDetailBinding
+
     private val viewModel by viewModels<UserDetailViewModel> {
         getVmFactory(
-            UserDetailFragmentArgs.fromBundle(
-                requireArguments()
-            ).login
+//            UserDetailFragmentArgs.fromBundle(
+//                requireArguments()
+//            ).login
         )
     }
 
@@ -27,8 +31,10 @@ class UserDetailFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_detail, container, false)
+        binding = FragmentUserDetailBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        return binding.root
     }
 
 }
